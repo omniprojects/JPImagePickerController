@@ -94,7 +94,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
 	// Configure the cell.
@@ -134,7 +134,6 @@
 		imagePickerController.imagePickerTitle = @"ImagePicker";
 		
 		[self.navigationController presentModalViewController:imagePickerController animated:YES];
-		[imagePickerController release];	
 		
 	} else {
 		if (chosenImage == -1) {
@@ -220,9 +219,6 @@
 # pragma mark -
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

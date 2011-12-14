@@ -97,7 +97,6 @@
     //Create Scroll view and add the ImageViewController.
     scrollView.contentSize = CGSizeMake(kJPImagePickerControllerPreviewImageSizeWidth, kJPImagePickerControllerPreviewImageSizeHeight);
     [scrollView addSubview:previewImageView];
-    [previewImageView release];
     scrollView.minimumZoomScale = 0.4;
 	scrollView.maximumZoomScale = 8.0;
 	scrollView.delegate = self;
@@ -163,9 +162,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

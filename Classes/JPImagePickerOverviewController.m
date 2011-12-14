@@ -37,7 +37,6 @@
                                                                                   target:self
                                                                                   action:@selector(cancelPicking:)];
     self.navigationItem.rightBarButtonItem = cancelButton;
-    [cancelButton release];	
 	
 	UIButton *button;
 	UIImage *thumbnail;
@@ -121,12 +120,6 @@
 }
 
 
-- (void)dealloc {
-	[imagePickerController release];
-	[detailController release];
-	[scrollView release];
-    [super dealloc];
-}
 
 
 @end
