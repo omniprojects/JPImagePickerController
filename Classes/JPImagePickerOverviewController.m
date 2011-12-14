@@ -15,8 +15,8 @@
 @synthesize imagePickerController, detailController, scrollView;
 
 #define PADDING_TOP 44
-#define PADDING 4
-#define THUMBNAIL_COLS 4
+#define PADDING 12
+#define THUMBNAIL_COLS 7
 
 - (id)initWithImagePickerController:(JPImagePickerController *)newImagePickerController {
     if (self = [super initWithNibName:@"JPImagePickerOverviewController" bundle:nil]) {
@@ -95,7 +95,9 @@
 
 
 - (void)buttonTouched:(UIButton *)sender {
-	[self performSelector:@selector(pushDetailViewWithSender:) withObject:sender afterDelay:0];
+	//[self performSelector:@selector(pushDetailViewWithSender:) withObject:sender afterDelay:0];
+    //skip confirmation screen and just return
+    [imagePickerController.delegate imagePicker:imagePickerController didFinishPickingWithImageNumber:sender.tag];
 }
 
 - (void)pushDetailViewWithSender:(UIButton *)sender {

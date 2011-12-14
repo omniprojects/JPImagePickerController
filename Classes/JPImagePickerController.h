@@ -19,8 +19,8 @@
  @constant kJPImagePickerControllerThumbnailSizeHeight Thumbnail height 75 px.
  */
 enum JPImagePickerControllerThumbnailSize {
-	kJPImagePickerControllerThumbnailSizeWidth = 75,
-	kJPImagePickerControllerThumbnailSizeHeight = 75
+	kJPImagePickerControllerThumbnailSizeWidth = 32,
+	kJPImagePickerControllerThumbnailSizeHeight = 32
 };
 
 /*!
