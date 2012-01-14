@@ -35,8 +35,8 @@
 	overviewController = [[JPImagePickerOverviewController alloc] initWithImagePickerController:self];
 	modalNavigationController = [[UINavigationController alloc] initWithRootViewController:overviewController];	
 	modalNavigationController.view.frame = self.view.bounds;
-	modalNavigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-	modalNavigationController.navigationBar.translucent = YES;
+//	modalNavigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+//	modalNavigationController.navigationBar.translucent = YES;
 	[self.view addSubview:modalNavigationController.view];
 }
 
