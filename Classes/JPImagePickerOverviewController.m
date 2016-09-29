@@ -22,18 +22,9 @@
     if (self = [super initWithNibName:@"JPImagePickerOverviewController" bundle:nil]) {
         // Custom initialization
 		imagePickerController = newImagePickerController;
-        [imagePickerController retain];
     }
     return self;
 }
-
-- (void)dealloc {
-	[imagePickerController release];
-	[detailController release];
-	[scrollView release];
-    [super dealloc];
-}
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -48,7 +39,7 @@
 
 	UIButton *button;
 	UIImage *thumbnail;
-	int images_count = [imagePickerController.dataSource numberOfImagesInImagePicker:imagePickerController];
+	long images_count = [imagePickerController.dataSource numberOfImagesInImagePicker:imagePickerController];
 
 	for (int i=0; i<images_count; i++) {
 		thumbnail = [[imagePickerController.dataSource imagePicker:imagePickerController thumbnailForImageNumber:(NSInteger)i]
@@ -69,11 +60,11 @@
 		[scrollView addSubview:button];
 	}
 
-	int rows = images_count / THUMBNAIL_COLS;
+	long rows = images_count / THUMBNAIL_COLS;
 	if (((float)images_count / THUMBNAIL_COLS) - rows != 0) {
 		rows++;
 	}
-	int height = kJPImagePickerControllerThumbnailSizeHeight * rows + PADDING * rows + PADDING + PADDING_TOP;
+	long height = kJPImagePickerControllerThumbnailSizeHeight * rows + PADDING * rows + PADDING + PADDING_TOP;
 
 	scrollView.contentSize = CGSizeMake(self.view.frame.size.width, height);
 	scrollView.clipsToBounds = YES;
@@ -97,7 +88,6 @@
 */
 
 - (IBAction)cancelPicking:(id)sender {
-	[[UIApplication sharedApplication] setStatusBarStyle:imagePickerController.originalStatusBarStyle animated:YES];
 	[imagePickerController.delegate imagePickerDidCancel:imagePickerController];
 }
 

@@ -28,14 +28,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [previewImageView release];
-    [overviewController release];
-    [largeImage release];
-    [scrollView release];
-    [super dealloc];
-}
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,8 +35,6 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-	originalStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
 	[super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	[self prepareForImageNumber:imageNumber];
@@ -115,13 +105,11 @@
 }
 
 - (IBAction)cancelPreview:(id)sender {
-	[[UIApplication sharedApplication] setStatusBarStyle:originalStatusBarStyle animated:YES];
     [previewImageView removeFromSuperview];
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)finishedPicking:(id)sender {
-	[[UIApplication sharedApplication] setStatusBarStyle:overviewController.imagePickerController.originalStatusBarStyle animated:YES];
 	[overviewController.imagePickerController.delegate imagePicker:overviewController.imagePickerController didFinishPickingWithImageNumber:imageNumber];
 }
 

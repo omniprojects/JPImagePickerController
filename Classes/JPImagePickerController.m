@@ -14,31 +14,9 @@
 
 @synthesize overviewController, modalNavigationController, delegate, dataSource, originalStatusBarStyle, imagePickerTitle;
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-- (void)dealloc {
-    [overviewController release];
-    [modalNavigationController release];
-    [imagePickerTitle release];
-    [super dealloc];
-}
-
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	originalStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
-
 	overviewController = [[JPImagePickerOverviewController alloc] initWithImagePickerController:self];
 	modalNavigationController = [[UINavigationController alloc] initWithRootViewController:overviewController];
 	modalNavigationController.view.frame = self.view.bounds;
@@ -49,9 +27,7 @@
 
 - (void)setImagePickerTitle:(NSString *)newTitle {
     if (newTitle != self.imagePickerTitle) {
-        [imagePickerTitle release];
         imagePickerTitle = newTitle;
-        [imagePickerTitle retain];
         [overviewController setImagePickerTitle:newTitle];
     }
 
@@ -64,7 +40,7 @@
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	if (delegate == nil) {
-		[self.navigationController dismissModalViewControllerAnimated:YES];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 	}
 	[modalNavigationController viewWillAppear:animated];
 }

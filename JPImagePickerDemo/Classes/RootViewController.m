@@ -19,13 +19,6 @@
 #define IMAGE_WIDTH 320
 #define IMAGE_HEIGHT 400
 
-
-- (void)dealloc {
-    [chosenImageView release];
-    [chosenImageController release];
-    [super dealloc];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -106,14 +99,14 @@
 	// Configure the cell.
 	if (indexPath.section == 0) {
 		cell.textLabel.text = @"Chose Image";
-		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		cell.textLabel.textAlignment = NSTextAlignmentCenter;
 	} else {
-		cell.textLabel.textAlignment = UITextAlignmentLeft;
+		cell.textLabel.textAlignment = NSTextAlignmentLeft;
 		cell.textLabel.text = @"Show chosen image";
 		if (chosenImage == -1) {
 			cell.imageView.image = [[UIImage imageNamed:@"noImageSelected.png"] scaleToSize:CGSizeMake(THUMBNAIL_SIZE, THUMBNAIL_SIZE) onlyIfNeeded:NO];
 		} else {
-			cell.imageView.image = [[UIImage imageNamed:[NSString stringWithFormat:@"t%i.png", (chosenImage % 4) + 1]] scaleToSize:CGSizeMake(THUMBNAIL_SIZE, THUMBNAIL_SIZE) onlyIfNeeded:NO];
+			cell.imageView.image = [[UIImage imageNamed:[NSString stringWithFormat:@"t%lu.png", (chosenImage % 4) + 1]] scaleToSize:CGSizeMake(THUMBNAIL_SIZE, THUMBNAIL_SIZE) onlyIfNeeded:NO];
 		}
 
 	}
@@ -139,13 +132,11 @@
 		imagePickerController.dataSource = self;
 		imagePickerController.imagePickerTitle = @"ImagePicker";
 
-		[self.navigationController presentModalViewController:imagePickerController animated:YES];
-
 	} else {
 		if (chosenImage == -1) {
 			chosenImageView.image = [[UIImage imageNamed:@"noImageSelected.png"] scaleToSize:CGSizeMake(320, 480) onlyIfNeeded:YES];
 		} else {
-			chosenImageView.image = [[UIImage imageNamed:[NSString stringWithFormat:@"i%i.png", (chosenImage % 4) + 1]] scaleToSize:CGSizeMake(IMAGE_WIDTH, IMAGE_HEIGHT) onlyIfNeeded:YES];
+			chosenImageView.image = [[UIImage imageNamed:[NSString stringWithFormat:@"i%li.png", (chosenImage % 4) + 1]] scaleToSize:CGSizeMake(IMAGE_WIDTH, IMAGE_HEIGHT) onlyIfNeeded:YES];
 		}
 
 		[self.navigationController pushViewController:chosenImageController animated:YES];
@@ -198,13 +189,13 @@
 # pragma mark JPImagePickerControllerDelegate
 
 - (void)imagePickerDidCancel:(JPImagePickerController *)picker {
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePicker:(JPImagePickerController *)picker didFinishPickingWithImageNumber:(NSInteger)imageNumber {
 	chosenImage = imageNumber;
 	[self.tableView reloadData];
-	[self.navigationController dismissModalViewControllerAnimated:YES];
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark JPImagePickerControllerDataSource
@@ -214,11 +205,11 @@
 }
 
 - (UIImage *)imagePicker:(JPImagePickerController *)picker thumbnailForImageNumber:(NSInteger)imageNumber {
-	return [UIImage imageNamed:[NSString stringWithFormat:@"t%i.png", (imageNumber % 4) + 1]];
+	return [UIImage imageNamed:[NSString stringWithFormat:@"t%li.png", (imageNumber % 4) + 1]];
 }
 
 - (UIImage *)imagePicker:(JPImagePickerController *)imagePicker imageForImageNumber:(NSInteger)imageNumber {
-	return [UIImage imageNamed:[NSString stringWithFormat:@"i%i.png", (imageNumber % 4) + 1]];
+	return [UIImage imageNamed:[NSString stringWithFormat:@"i%li.png", (imageNumber % 4) + 1]];
 }
 
 @end
