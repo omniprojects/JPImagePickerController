@@ -1,5 +1,5 @@
 //
-//  UIImageResizing.h
+//  UIImage+JPImagePickerController.h
 //  JPImagePickerController
 //
 //  Created by Jeena on 07.11.09.
@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface UIImage (Resize)
+@interface UIImage (JPImagePickerController)
 
 + (UIImage *)image:(UIImage *)sourceImage scaleAndCroppForSize:(CGSize)targetSize;
 - (UIImage *)scaleAndCropToSize:(CGSize)newSize;

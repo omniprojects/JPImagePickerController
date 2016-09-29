@@ -16,7 +16,7 @@
 		1F3A7D0210AF40A300ED9B63 /* JPImagePickerDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3A7CFA10AF40A300ED9B63 /* JPImagePickerDetailController.xib */; };
 		1F3A7D0310AF40A300ED9B63 /* JPImagePickerOverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A7CFC10AF40A300ED9B63 /* JPImagePickerOverviewController.m */; };
 		1F3A7D0410AF40A300ED9B63 /* JPImagePickerOverviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3A7CFD10AF40A300ED9B63 /* JPImagePickerOverviewController.xib */; };
-		1F3A7D0510AF40A300ED9B63 /* UIImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A7CFF10AF40A300ED9B63 /* UIImageResizing.m */; };
+		1F3A7D0510AF40A300ED9B63 /* UIImage+JPImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A7CFF10AF40A300ED9B63 /* UIImage+JPImagePickerController.m */; };
 		1FBADE6910AAFC5D00BAB679 /* i1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBADE6010AAFC5D00BAB679 /* i1.png */; };
 		1FBADE6A10AAFC5D00BAB679 /* i2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBADE6110AAFC5D00BAB679 /* i2.png */; };
 		1FBADE6B10AAFC5D00BAB679 /* i3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FBADE6210AAFC5D00BAB679 /* i3.png */; };
@@ -47,8 +47,8 @@
 		1F3A7CFB10AF40A300ED9B63 /* JPImagePickerOverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPImagePickerOverviewController.h; sourceTree = "<group>"; };
 		1F3A7CFC10AF40A300ED9B63 /* JPImagePickerOverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPImagePickerOverviewController.m; sourceTree = "<group>"; };
 		1F3A7CFD10AF40A300ED9B63 /* JPImagePickerOverviewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JPImagePickerOverviewController.xib; sourceTree = "<group>"; };
-		1F3A7CFE10AF40A300ED9B63 /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageResizing.h; sourceTree = "<group>"; };
-		1F3A7CFF10AF40A300ED9B63 /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageResizing.m; sourceTree = "<group>"; };
+		1F3A7CFE10AF40A300ED9B63 /* UIImage+JPImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JPImagePickerController.h"; sourceTree = "<group>"; };
+		1F3A7CFF10AF40A300ED9B63 /* UIImage+JPImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JPImagePickerController.m"; sourceTree = "<group>"; };
 		1FBADE6010AAFC5D00BAB679 /* i1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i1.png; sourceTree = "<group>"; };
 		1FBADE6110AAFC5D00BAB679 /* i2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i2.png; sourceTree = "<group>"; };
 		1FBADE6210AAFC5D00BAB679 /* i3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = i3.png; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 				1F3A7CFB10AF40A300ED9B63 /* JPImagePickerOverviewController.h */,
 				1F3A7CFC10AF40A300ED9B63 /* JPImagePickerOverviewController.m */,
 				1F3A7CFD10AF40A300ED9B63 /* JPImagePickerOverviewController.xib */,
-				1F3A7CFE10AF40A300ED9B63 /* UIImageResizing.h */,
-				1F3A7CFF10AF40A300ED9B63 /* UIImageResizing.m */,
+				1F3A7CFE10AF40A300ED9B63 /* UIImage+JPImagePickerController.h */,
+				1F3A7CFF10AF40A300ED9B63 /* UIImage+JPImagePickerController.m */,
 			);
 			name = JPImagePickerController;
 			path = ../Classes;
@@ -268,7 +268,7 @@
 				1F3A7D0010AF40A300ED9B63 /* JPImagePickerController.m in Sources */,
 				1F3A7D0110AF40A300ED9B63 /* JPImagePickerDetailController.m in Sources */,
 				1F3A7D0310AF40A300ED9B63 /* JPImagePickerOverviewController.m in Sources */,
-				1F3A7D0510AF40A300ED9B63 /* UIImageResizing.m in Sources */,
+				1F3A7D0510AF40A300ED9B63 /* UIImage+JPImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

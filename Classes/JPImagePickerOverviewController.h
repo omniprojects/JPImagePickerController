@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "JPImagePickerController.h"
 #import "JPImagePickerDetailController.h"
-#import "UIImageResizing.h"
+#import "UIImage+JPImagePickerController.h"
 
 @class JPImagePickerController, JPImagePickerDetailController;
 @protocol JPImagePickerControllerDelegate, JPImagePickerControllerDataSource;

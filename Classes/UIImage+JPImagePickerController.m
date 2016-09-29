@@ -1,5 +1,5 @@
 //
-//  UIImageResizing.m
+//  UIImage+JPImagePickerController.m
 //  JPImagePickerController
 //
 //  Created by Jeena on 07.11.09.
@@ -7,8 +7,7 @@
 //  Licence: MIT-Licence
 //
 
-#import "UIImageResizing.h"
-
+#import "UIImage+JPImagePickerController.h"
 
 @implementation UIImage (Resizing)
 
