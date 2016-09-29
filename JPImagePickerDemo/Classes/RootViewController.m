@@ -70,7 +70,7 @@
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
+
 	// Release any cached data, images, etc that aren't in use.
 }
 
@@ -95,17 +95,17 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
 	// Configure the cell.
 	if (indexPath.section == 0) {
-		cell.textLabel.text = @"Chose Image";		
+		cell.textLabel.text = @"Chose Image";
 		cell.textLabel.textAlignment = UITextAlignmentCenter;
 	} else {
 		cell.textLabel.textAlignment = UITextAlignmentLeft;
@@ -117,7 +117,7 @@
 		}
 
 	}
-	
+
     return cell;
 }
 
@@ -134,21 +134,20 @@
 
 	if (indexPath.section == 0) {
 		JPImagePickerController *imagePickerController = [[JPImagePickerController alloc] init];
-		
+
 		imagePickerController.delegate = self;
 		imagePickerController.dataSource = self;
 		imagePickerController.imagePickerTitle = @"ImagePicker";
-		
+
 		[self.navigationController presentModalViewController:imagePickerController animated:YES];
-		[imagePickerController release];	
-		
+
 	} else {
 		if (chosenImage == -1) {
 			chosenImageView.image = [[UIImage imageNamed:@"noImageSelected.png"] scaleToSize:CGSizeMake(320, 480) onlyIfNeeded:YES];
 		} else {
 			chosenImageView.image = [[UIImage imageNamed:[NSString stringWithFormat:@"i%i.png", (chosenImage % 4) + 1]] scaleToSize:CGSizeMake(IMAGE_WIDTH, IMAGE_HEIGHT) onlyIfNeeded:YES];
 		}
-		
+
 		[self.navigationController pushViewController:chosenImageController animated:YES];
 	}
 
@@ -168,14 +167,14 @@
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source.
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
+    }
 }
 */
 

@@ -35,15 +35,15 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
 	originalStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
-	
+
 	overviewController = [[JPImagePickerOverviewController alloc] initWithImagePickerController:self];
-	modalNavigationController = [[UINavigationController alloc] initWithRootViewController:overviewController];	
+	modalNavigationController = [[UINavigationController alloc] initWithRootViewController:overviewController];
 	modalNavigationController.view.frame = self.view.bounds;
-	modalNavigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-	modalNavigationController.navigationBar.translucent = YES;
+//	modalNavigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+//	modalNavigationController.navigationBar.translucent = YES;
 	[self.view addSubview:modalNavigationController.view];
 }
 
@@ -52,16 +52,16 @@
         [imagePickerTitle release];
         imagePickerTitle = newTitle;
         [imagePickerTitle retain];
-        [overviewController setImagePickerTitle:newTitle];        
+        [overviewController setImagePickerTitle:newTitle];
     }
-    
+
 }
 
 - (NSString *)imagePickerTitle {
 	return imagePickerTitle;
 }
 
--(void)viewWillAppear:(BOOL)animated { 
+-(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	if (delegate == nil) {
 		[self.navigationController dismissModalViewControllerAnimated:YES];
@@ -69,15 +69,15 @@
 	[modalNavigationController viewWillAppear:animated];
 }
 
--(void)viewWillDisappear:(BOOL)animated { 
+-(void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	[modalNavigationController viewWillDisappear:animated];
 }
--(void)viewDidAppear:(BOOL)animated { 
+-(void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	[modalNavigationController viewDidAppear:animated];
 }
--(void)viewDidDisappear:(BOOL)animated { 
+-(void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	[modalNavigationController viewDidDisappear:animated];
 }
@@ -97,7 +97,7 @@
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
+
 	// Release any cached data, images, etc that aren't in use.
 }
 

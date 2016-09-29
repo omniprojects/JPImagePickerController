@@ -19,8 +19,8 @@
  @constant kJPImagePickerControllerThumbnailSizeHeight Thumbnail height 75 px.
  */
 enum JPImagePickerControllerThumbnailSize {
-	kJPImagePickerControllerThumbnailSizeWidth = 75,
-	kJPImagePickerControllerThumbnailSizeHeight = 75
+	kJPImagePickerControllerThumbnailSizeWidth = 32,
+	kJPImagePickerControllerThumbnailSizeHeight = 32
 };
 
 /*!
@@ -128,7 +128,7 @@ enum JPImagePickerControllerPreviewImageSize {
 
 @interface JPImagePickerController : UIViewController {
 	IBOutlet UINavigationController *modalNavigationController;
-	UIStatusBarStyle originalStatusBarStyle; 
+	UIStatusBarStyle originalStatusBarStyle;
 	id<JPImagePickerControllerDelegate> delegate;
 	id<JPImagePickerControllerDataSource> dataSource;
 	NSString *imagePickerTitle;
@@ -140,7 +140,7 @@ enum JPImagePickerControllerPreviewImageSize {
  @discussion We need it to be able to view a navigation when the user
  picks a image.
  */
-@property (nonatomic, retain) IBOutlet UINavigationController *modalNavigationController;
+@property (nonatomic, strong) IBOutlet UINavigationController *modalNavigationController;
 
 /*!
  @property overviewController
@@ -148,7 +148,7 @@ enum JPImagePickerControllerPreviewImageSize {
  @discussion This controller holds the scrollView with all the buttons which
  represent the images.
  */
-@property (nonatomic, retain) JPImagePickerOverviewController *overviewController;
+@property (nonatomic, strong) JPImagePickerOverviewController *overviewController;
 
 /*!
  @property overviewController
@@ -167,7 +167,7 @@ enum JPImagePickerControllerPreviewImageSize {
  If this property is nil, the picker is dismissed immediately if you try
  to show it.
  */
-@property (nonatomic, assign) id<JPImagePickerControllerDelegate> delegate;
+@property (nonatomic, strong) id<JPImagePickerControllerDelegate> delegate;
 
 /*!
  @property dataSource
@@ -176,14 +176,14 @@ enum JPImagePickerControllerPreviewImageSize {
  and implement the required methods to return the number of components and the
  number of rows in each component.
  */
-@property (nonatomic, assign) id<JPImagePickerControllerDataSource> dataSource;
+@property (nonatomic, strong) id<JPImagePickerControllerDataSource> dataSource;
 
 /*!
  @property imagePickerTitle
  @abstract The image picker title.
  @discussion You can set the title for the image overview here.
  */
-@property (nonatomic, retain) NSString *imagePickerTitle;
+@property (nonatomic, strong) NSString *imagePickerTitle;
 
 /*!
  @method cancelPicking:

@@ -15,8 +15,8 @@
 @synthesize imagePickerController, detailController, scrollView;
 
 #define PADDING_TOP 44
-#define PADDING 4
-#define THUMBNAIL_COLS 4
+#define PADDING 12
+#define THUMBNAIL_COLS 7
 
 - (id)initWithImagePickerController:(JPImagePickerController *)newImagePickerController {
     if (self = [super initWithNibName:@"JPImagePickerOverviewController" bundle:nil]) {
@@ -38,24 +38,23 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
 	[self setImagePickerTitle:imagePickerController.imagePickerTitle];
-	
+
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                   target:self
                                                                                   action:@selector(cancelPicking:)];
     self.navigationItem.rightBarButtonItem = cancelButton;
-    [cancelButton release];	
-	
+
 	UIButton *button;
 	UIImage *thumbnail;
 	int images_count = [imagePickerController.dataSource numberOfImagesInImagePicker:imagePickerController];
-	
+
 	for (int i=0; i<images_count; i++) {
 		thumbnail = [[imagePickerController.dataSource imagePicker:imagePickerController thumbnailForImageNumber:(NSInteger)i]
 					 scaleAndCropToSize:CGSizeMake(kJPImagePickerControllerThumbnailSizeWidth, kJPImagePickerControllerThumbnailSizeHeight)
 					 onlyIfNeeded:NO];
-		
+
 		button = [UIButton buttonWithType:UIButtonTypeCustom];
 		[button setImage:thumbnail forState:UIControlStateNormal];
 		button.showsTouchWhenHighlighted = YES;
@@ -66,19 +65,19 @@
 								  kJPImagePickerControllerThumbnailSizeHeight * (i / THUMBNAIL_COLS) + PADDING * (i / THUMBNAIL_COLS) + PADDING + PADDING_TOP,
 								  kJPImagePickerControllerThumbnailSizeWidth,
 								  kJPImagePickerControllerThumbnailSizeHeight);
-		
+
 		[scrollView addSubview:button];
 	}
-	
+
 	int rows = images_count / THUMBNAIL_COLS;
 	if (((float)images_count / THUMBNAIL_COLS) - rows != 0) {
 		rows++;
 	}
 	int height = kJPImagePickerControllerThumbnailSizeHeight * rows + PADDING * rows + PADDING + PADDING_TOP;
-	
+
 	scrollView.contentSize = CGSizeMake(self.view.frame.size.width, height);
 	scrollView.clipsToBounds = YES;
-		
+
 }
 
 - (void)setImagePickerTitle:(NSString *)newTitle {
@@ -104,14 +103,16 @@
 
 
 - (void)buttonTouched:(UIButton *)sender {
-	[self performSelector:@selector(pushDetailViewWithSender:) withObject:sender afterDelay:0];
+	//[self performSelector:@selector(pushDetailViewWithSender:) withObject:sender afterDelay:0];
+    //skip confirmation screen and just return
+    [imagePickerController.delegate imagePicker:imagePickerController didFinishPickingWithImageNumber:sender.tag];
 }
 
 - (void)pushDetailViewWithSender:(UIButton *)sender {
 	if (detailController == nil) {
 		detailController = [[JPImagePickerDetailController alloc] initWithOverviewController:self];
 	}
-	
+
 	detailController.imageNumber = sender.tag;
 	[imagePickerController.modalNavigationController pushViewController:detailController animated:YES];
 }
@@ -119,7 +120,7 @@
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
+
 	// Release any cached data, images, etc that aren't in use.
 }
 
@@ -127,6 +128,5 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
 
 @end

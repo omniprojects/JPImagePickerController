@@ -82,11 +82,11 @@
 							   imageForImageNumber:imageNumber]
 							  scaleToSize:CGSizeMake(kJPImagePickerControllerPreviewImageSizeWidth, kJPImagePickerControllerPreviewImageSizeHeight)
 							  onlyIfNeeded:YES];
-    
+
     self.previewImageView = [[UIImageView alloc] initWithImage:image];
-	
+
 	self.largeImage = image;
-    
+
     //Center the image code
     CGRect frameToCenter = previewImageView.frame;
     CGSize boundsSize = CGSizeMake(kJPImagePickerControllerPreviewImageSizeWidth, kJPImagePickerControllerPreviewImageSizeHeight);
@@ -94,25 +94,24 @@
         frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2;
     else
         frameToCenter.origin.x = 0;
-    
+
     // center vertically
     if (frameToCenter.size.height < boundsSize.height)
         frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2;
     else
         frameToCenter.origin.y = 0;
-    
+
     previewImageView.frame = frameToCenter;
-  
+
     //Create Scroll view and add the ImageViewController.
     scrollView.contentSize = CGSizeMake(kJPImagePickerControllerPreviewImageSizeWidth, kJPImagePickerControllerPreviewImageSizeHeight);
     [scrollView addSubview:previewImageView];
-
     scrollView.minimumZoomScale = 0.4;
 	scrollView.maximumZoomScale = 8.0;
 	scrollView.delegate = self;
-    
+
 	[scrollView setZoomScale:1];
-    
+
 }
 
 - (IBAction)cancelPreview:(id)sender {
@@ -133,19 +132,19 @@
 }
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center {
-    
+
     CGRect zoomRect;
-    
+
     // the zoom rect is in the content view's coordinates.
     // At a zoom scale of 1.0, it would be the size of the imageScrollView's bounds.
     // As the zoom scale decreases, so more content is visible, the size of the rect grows.
     zoomRect.size.height = [self.scrollView frame].size.height / scale;
     zoomRect.size.width = [self.scrollView frame].size.width / scale;
-    
+
     // choose an origin so as to get the right center.
     zoomRect.origin.x = center.x - (zoomRect.size.width / 2.0);
     zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
-    
+
     return zoomRect;
 }
 
@@ -161,14 +160,14 @@
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
+
 	// Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-    
+
 }
 
 @end

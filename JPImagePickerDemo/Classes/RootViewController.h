@@ -15,7 +15,7 @@
 	IBOutlet UIImageView *chosenImageView;
 }
 
-@property (nonatomic, retain) IBOutlet UIViewController *chosenImageController;
-@property (nonatomic, retain) IBOutlet UIImageView *chosenImageView;
+@property (nonatomic, strong) IBOutlet UIViewController *chosenImageController;
+@property (nonatomic, strong) IBOutlet UIImageView *chosenImageView;
 
 @end
